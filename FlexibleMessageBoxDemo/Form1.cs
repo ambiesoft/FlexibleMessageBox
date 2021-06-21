@@ -29,7 +29,9 @@ namespace FlexibleMessageBoxDemo
 
                 if (result < 950)
                 {
-                    builder.AppendFormat(" - Task {0}: Operation completed sucessfully.\n", i);
+                    // builder.AppendFormat(" - Task {0}: Operation completed sucessfully.\n", i);
+                    builder.AppendFormat(Properties.Resources.TASK_N_OPERATION_COMPLETED_SUCESSFULLY, i);
+                    builder.AppendLine();
                 }
                 else
                 {
@@ -50,7 +52,9 @@ namespace FlexibleMessageBoxDemo
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var result = FlexibleMessageBox.Show("Some text with a link: www.google.com\nA second line that contains a very very very very very very very very very very very very very very long text.",
+            var result = FlexibleMessageBox.Show(
+                                            //"Some text with a link: www.google.com\nA second line that contains a very very very very very very very very very very very very very very long text.",
+                                            Properties.Resources.SOME_TEXT_WITH_A_LINK,
                                             "I am a FlexibleMessageBox",
                                             MessageBoxButtons.AbortRetryIgnore,
                                             MessageBoxIcon.Information,

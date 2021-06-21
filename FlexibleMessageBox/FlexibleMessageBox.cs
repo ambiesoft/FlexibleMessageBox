@@ -78,6 +78,11 @@ namespace JR.Utils.GUI.Forms
      *  Version 1.0 - 15.April 2013
      *   - Initial Version
     */
+
+    // Additon by Ambiesoft
+    // Version 1.4.1 2021/06/21
+    // Clear IMF_DUALFONT and IMF_AUTOFONT from RichTextBox to show the font property
+
     public class FlexibleMessageBox
     {
         #region Public statics
@@ -391,11 +396,20 @@ namespace JR.Utils.GUI.Forms
                 this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
                 this.Text = "<Caption>";
                 this.Shown += new System.EventHandler(this.FlexibleMessageBoxForm_Shown);
+                this.Load += FlexibleMessageBoxForm_Load;
                 ((System.ComponentModel.ISupportInitialize)(this.FlexibleMessageBoxFormBindingSource)).EndInit();
                 this.panel1.ResumeLayout(false);
                 ((System.ComponentModel.ISupportInitialize)(this.pictureBoxForIcon)).EndInit();
                 this.ResumeLayout(false);
                 this.PerformLayout();
+            }
+
+            private void FlexibleMessageBoxForm_Load(object sender, EventArgs e)
+            {
+                uint lParam;
+                lParam = SendMessage(richTextBoxMessage.Handle, EM_GETLANGOPTIONS, 0, 0);
+                lParam &= ~(IMF_DUALFONT | IMF_AUTOFONT);
+                SendMessage(richTextBoxMessage.Handle, EM_SETLANGOPTIONS, 0, lParam);
             }
 
             private System.Windows.Forms.Button button1;
@@ -832,6 +846,8 @@ namespace JR.Utils.GUI.Forms
                 //Bind the caption and the message text
                 flexibleMessageBoxForm.CaptionText = caption;
                 flexibleMessageBoxForm.MessageText = text;
+
+
                 flexibleMessageBoxForm.FlexibleMessageBoxFormBindingSource.DataSource = flexibleMessageBoxForm;
 
                 //Set the buttons visibilities and texts. Also set a default button.
@@ -858,5 +874,15 @@ namespace JR.Utils.GUI.Forms
         } //class FlexibleMessageBoxForm
 
         #endregion
+
+        //RichTextBoxでフォントが勝手に変わらないためのAPI
+        private const uint IMF_AUTOFONT = 0x02;
+        private const uint IMF_DUALFONT = 0x80;
+        private const uint WM_USER = 0x0400;
+        private const uint EM_SETLANGOPTIONS = WM_USER + 120;
+        private const uint EM_GETLANGOPTIONS = WM_USER + 121;
+        [System.Runtime.InteropServices.DllImport("USER32.dll")]
+        private static extern uint SendMessage(System.IntPtr hWnd, uint msg, uint wParam, uint lParam);
+
     }
 }

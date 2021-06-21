@@ -44,6 +44,7 @@ namespace FlexibleMessageBoxDemo
         private void button1_Click(object sender, EventArgs e)
         {
             string aaa = GetBatchOperationResults();
+            FlexibleMessageBox.FONT = Font;
             FlexibleMessageBox.Show(aaa,
                 Application.ProductName,
                 MessageBoxButtons.OK,
@@ -52,6 +53,7 @@ namespace FlexibleMessageBoxDemo
 
         private void button2_Click(object sender, EventArgs e)
         {
+            FlexibleMessageBox.FONT = Font;
             var result = FlexibleMessageBox.Show(
                                             //"Some text with a link: www.google.com\nA second line that contains a very very very very very very very very very very very very very very long text.",
                                             Properties.Resources.SOME_TEXT_WITH_A_LINK,

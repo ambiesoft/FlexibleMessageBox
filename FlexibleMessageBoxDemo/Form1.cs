@@ -63,5 +63,14 @@ namespace FlexibleMessageBoxDemo
                                             MessageBoxDefaultButton.Button2);
             FlexibleMessageBox.Show("You have clicked: " + result.ToString(), "DialogResult");
         }
+
+        private void btnNormal_Click(object sender, EventArgs e)
+        {
+            FlexibleMessageBox.Show(this,
+                "MyApp v1.0.1\r\n\r\nhttp://example.com",
+                "MyApp",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+        }
     }
 }

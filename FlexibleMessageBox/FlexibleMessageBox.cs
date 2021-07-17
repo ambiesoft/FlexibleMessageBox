@@ -82,6 +82,9 @@ namespace JR.Utils.GUI.Forms
     // Additon by Ambiesoft
     // Version 1.4.1 2021/06/21
     // Clear IMF_DUALFONT and IMF_AUTOFONT from RichTextBox to show the font property
+    //
+    // Version 1.4.3 2021/07/17
+    // Add: magicAdd for temporary fix to fit size
 
     public class FlexibleMessageBox
     {
@@ -570,7 +573,8 @@ namespace JR.Utils.GUI.Forms
                 //Calculate margins
                 var marginWidth = flexibleMessageBoxForm.Width - flexibleMessageBoxForm.richTextBoxMessage.Width;
                 var marginHeight = flexibleMessageBoxForm.Height - flexibleMessageBoxForm.richTextBoxMessage.Height;
-
+                int magicAdd = 12;
+                marginHeight += magicAdd;
                 //Set calculated dialog size (if the calculated values exceed the maximums, they were cut by windows forms automatically)
                 flexibleMessageBoxForm.Size = new Size(textWidth + marginWidth,
                                                        textHeight + marginHeight);

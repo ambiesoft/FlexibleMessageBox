@@ -33,6 +33,7 @@ namespace FlexibleMessageBoxDemo
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnNormal = new System.Windows.Forms.Button();
+            this.btnOneLine = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -56,10 +57,18 @@ namespace FlexibleMessageBoxDemo
             this.btnNormal.UseVisualStyleBackColor = true;
             this.btnNormal.Click += new System.EventHandler(this.btnNormal_Click);
             // 
+            // btnOneLine
+            // 
+            resources.ApplyResources(this.btnOneLine, "btnOneLine");
+            this.btnOneLine.Name = "btnOneLine";
+            this.btnOneLine.UseVisualStyleBackColor = true;
+            this.btnOneLine.Click += new System.EventHandler(this.btnOneLine_Click);
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnOneLine);
             this.Controls.Add(this.btnNormal);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -73,6 +82,7 @@ namespace FlexibleMessageBoxDemo
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnNormal;
+        private System.Windows.Forms.Button btnOneLine;
     }
 }
 

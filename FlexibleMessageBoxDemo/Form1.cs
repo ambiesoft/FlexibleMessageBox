@@ -72,5 +72,14 @@ namespace FlexibleMessageBoxDemo
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
+
+        private void btnOneLine_Click(object sender, EventArgs e)
+        {
+            FlexibleMessageBox.Show(this,
+                "MyApp v1.0.1",
+                "MyApp",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+        }
     }
 }

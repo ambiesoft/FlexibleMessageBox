@@ -141,7 +141,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
     <value>392, 132</value>
@@ -165,7 +165,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;button2.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="btnNormal.Location" type="System.Drawing.Point, System.Drawing">
     <value>64, 64</value>
@@ -189,6 +189,30 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnNormal.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnOneLine.Location" type="System.Drawing.Point, System.Drawing">
+    <value>190, 64</value>
+  </data>
+  <data name="btnOneLine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="btnOneLine.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="btnOneLine.Text" xml:space="preserve">
+    <value>One Line</value>
+  </data>
+  <data name="&gt;&gt;btnOneLine.Name" xml:space="preserve">
+    <value>btnOneLine</value>
+  </data>
+  <data name="&gt;&gt;btnOneLine.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnOneLine.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnOneLine.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

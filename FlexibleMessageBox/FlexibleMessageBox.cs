@@ -85,6 +85,11 @@ namespace JR.Utils.GUI.Forms
     //
     // Version 1.4.3 2021/07/17
     // Add: magicAdd for temporary fix to fit size
+    
+    // Version 1.4.4 2022/02/27
+    // Set .Net Framework ver to 4.5.2
+    // if (owner == null) flexibleMessageBoxForm.ShowInTaskbar = true;
+
 
     public class FlexibleMessageBox
     {
@@ -871,6 +876,9 @@ namespace JR.Utils.GUI.Forms
 
                 //Set the dialogs start position when given. Otherwise center the dialog on the current screen.
                 SetDialogStartPosition(flexibleMessageBoxForm, owner);
+
+                if (owner == null)
+                    flexibleMessageBoxForm.ShowInTaskbar = true;
 
                 //Show the dialog
                 return flexibleMessageBoxForm.ShowDialog(owner);

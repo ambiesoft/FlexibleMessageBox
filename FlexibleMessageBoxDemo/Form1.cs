@@ -82,6 +82,18 @@ namespace FlexibleMessageBoxDemo
                 MessageBoxIcon.Information);
         }
 
+        private void buttonLongLine_Click(object sender, EventArgs e)
+        {
+            double MAX_WIDTH_FACTOR_start = FlexibleMessageBox.MAX_WIDTH_FACTOR;
+            FlexibleMessageBox.MAX_WIDTH_FACTOR = 0.3f;
+            FlexibleMessageBox.Show(this,
+                "MyApp v1.0.1 this is a long line message - this is a long line message - this is a long line message - this is a long line message - this is a long line message - this is a long line message - this is a long line message - this is a long line message - this is a long line message - this is a long line message - this is a long line message - this is a long line message - this is a long line message - ",
+                "MyApp",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+            FlexibleMessageBox.MAX_WIDTH_FACTOR = MAX_WIDTH_FACTOR_start;
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
         }

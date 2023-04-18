@@ -141,7 +141,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
     <value>392, 132</value>
@@ -165,7 +165,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;button2.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="btnNormal.Location" type="System.Drawing.Point, System.Drawing">
     <value>64, 64</value>
@@ -189,7 +189,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnNormal.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="btnOneLine.Location" type="System.Drawing.Point, System.Drawing">
     <value>190, 64</value>
@@ -213,7 +213,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnOneLine.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="button3.Location" type="System.Drawing.Point, System.Drawing">
     <value>502, 132</value>
@@ -237,6 +237,30 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;button3.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonLongLine.Location" type="System.Drawing.Point, System.Drawing">
+    <value>301, 64</value>
+  </data>
+  <data name="buttonLongLine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>261, 23</value>
+  </data>
+  <data name="buttonLongLine.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="buttonLongLine.Text" xml:space="preserve">
+    <value>Long Line with MAX_WIDTH_FACTOR=0.3</value>
+  </data>
+  <data name="&gt;&gt;buttonLongLine.Name" xml:space="preserve">
+    <value>buttonLongLine</value>
+  </data>
+  <data name="&gt;&gt;buttonLongLine.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonLongLine.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonLongLine.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -249,7 +273,7 @@
     <value>659, 336</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Meiryo UI, 9pt</value>
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Form1</value>

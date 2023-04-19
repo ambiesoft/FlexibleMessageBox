@@ -61,6 +61,15 @@ namespace FlexibleMessageBoxDemo.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ❤️❤️⏳⏮⏲.
+        /// </summary>
+        internal static string SAMPLE_EMOJIS {
+            get {
+                return ResourceManager.GetString("SAMPLE_EMOJIS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Some text with a link: www.google.com
         ///A second line that contains a very very very very very very very very very very very very very very long text..
         /// </summary>

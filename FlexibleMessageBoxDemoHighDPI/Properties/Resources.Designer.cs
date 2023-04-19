@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FlexibleMessageBoxDemoHighDPI.Properties
-{
-
-
+namespace FlexibleMessageBoxDemoHighDPI.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -19,52 +19,58 @@ namespace FlexibleMessageBoxDemoHighDPI.Properties
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
-    {
-
+    internal class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
+        internal Resources() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if ((resourceMan == null))
-                {
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FlexibleMessageBoxDemoHighDPI.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 検索（けんさく、英: search）とは、データの集合の中から目的のデータを探し出すことである。また、目的のデータが存在しないことの確認行為も含まれる。古くは図書館の所蔵物を探し出したり、辞書の項目を引いたりといった人手で行うのが主だったが、コンピューターの発達により、テキスト文字列の検索（文書検索、文字列探索）、画像データの検索（画像検索）、音声データの検索（音声検索）など、大規模かつマルチメディアの情報に関する検索技術が発展した。さらにデータベースの発展とインターネットの普及に伴い、分散保管されているデータに対する検索技術が研究されている。ファイルの内容に対して文字列探索を行う機能も検索と呼ばれる。
+        ///
+        ///要人警護など重要警備に際して警備犬や潜水士などを動員して不審物の有無を確認する作業を検索と呼ぶことがある。
+        ///
+        ///歴史
+        ///日本ではコンピュータ技術の発達により1970年代に「情報検索システム」が始まり、言葉としての｢検索｣は次第に広く使われ始めた[1][2]。英語の文化圏では言葉としての「検索」は犬のゴールデン・レトリバーに見るように「探し出す」を意味する「retrieval」や「retrieve」とし [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string STR_RANDOM {
+            get {
+                return ResourceManager.GetString("STR_RANDOM", resourceCulture);
             }
         }
     }

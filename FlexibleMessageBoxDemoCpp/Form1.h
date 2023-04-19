@@ -66,7 +66,7 @@ namespace FlexibleMessageBoxDemoCpp {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 0;
-			this->button1->Text = L"button1";
+			this->button1->Text = L"Hearts not show properly";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
 			// 
@@ -82,17 +82,7 @@ namespace FlexibleMessageBoxDemoCpp {
 
 		}
 #pragma endregion
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		String^ aaa = LR"V0G0N(
-❤️❤️❤️
-)V0G0N";
-
-		JR::Utils::GUI::Forms::FlexibleMessageBox::Show(this,
-			aaa,
-			"MyApp",
-			MessageBoxButtons::OK,
-			MessageBoxIcon::Information);
-	}
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
 	};
 }
 

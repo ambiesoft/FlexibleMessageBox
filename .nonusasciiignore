@@ -1,3 +1,5 @@
 *.resx
 *.resX
 FlexibleMessageBox/FlexibleMessageBox.cs
+*.Designer.cs
+*.ico

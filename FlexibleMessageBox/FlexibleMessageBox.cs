@@ -85,11 +85,11 @@ namespace JR.Utils.GUI.Forms
     //
     // Version 1.4.3 2021/07/17
     // Add: magicAdd for temporary fix to fit size
-    
     // Version 1.4.4 2022/02/27
     // Set .Net Framework ver to 4.5.2
     // if (owner == null) flexibleMessageBoxForm.ShowInTaskbar = true;
-
+    // Version 1.4.5 2023/04/19
+    // Use resources for button text
 
     public class FlexibleMessageBox
     {
@@ -283,10 +283,6 @@ namespace JR.Utils.GUI.Forms
                 base.Dispose(disposing);
             }
 
-            /// <summary>
-            /// Erforderliche Methode für die Designerunterstützung.
-            /// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
-            /// </summary>
             private void InitializeComponent()
             {
                 this.components = new System.ComponentModel.Container();
@@ -446,7 +442,16 @@ namespace JR.Utils.GUI.Forms
             private static readonly String[] BUTTON_TEXTS_GERMAN_DE = { "OK", "Abbrechen", "&Ja", "&Nein", "&Abbrechen", "&Wiederholen", "&Ignorieren" };
             private static readonly String[] BUTTON_TEXTS_SPANISH_ES = { "Aceptar", "Cancelar", "&Sí", "&No", "&Abortar", "&Reintentar", "&Ignorar" };
             private static readonly String[] BUTTON_TEXTS_ITALIAN_IT = { "OK", "Annulla", "&Sì", "&No", "&Interrompi", "&Riprova", "&Ignora" };
-            private static readonly String[] BUTTON_TEXTS_ITALIAN_JA = { "OK", "キャンセル", "はい(&Y)", "いいえ(&N)", "中止(&A)", "再試行(&R)", "無視(&I)" };
+            private static readonly String[] BUTTON_TEXTS_ITALIAN_JA = {
+                Properties.Resources.JA_OK,
+                Properties.Resources.JA_CANCEL,
+                Properties.Resources.JA_YES,
+                Properties.Resources.JA_NO,
+                Properties.Resources.JA_ABORT,
+                Properties.Resources.JA_RETRY,
+                Properties.Resources.JA_IGNORE
+            };
+
 
             #endregion
 
@@ -889,7 +894,7 @@ namespace JR.Utils.GUI.Forms
 
         #endregion
 
-        //RichTextBoxでフォントが勝手に変わらないためのAPI
+        // APIs to prevent RichTextBox from changing font automatically
         private const uint IMF_AUTOFONT = 0x02;
         private const uint IMF_DUALFONT = 0x80;
         private const uint WM_USER = 0x0400;

@@ -83,7 +83,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <Reference Include="Ambiesoft.AmbLibcpp">
-      <HintPath>C:\Linkout\DNAssembly.NET4\Ambiesoft.AmbLibcpp.dll</HintPath>
+      <HintPath>C:\Linkout\DNAssembly.NET4.5.2\Ambiesoft.AmbLibcpp.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>

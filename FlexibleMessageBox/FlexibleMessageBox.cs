@@ -85,11 +85,16 @@ namespace JR.Utils.GUI.Forms
     //
     // Version 1.4.3 2021/07/17
     // Add: magicAdd for temporary fix to fit size
+    //
     // Version 1.4.4 2022/02/27
     // Set .Net Framework ver to 4.5.2
     // if (owner == null) flexibleMessageBoxForm.ShowInTaskbar = true;
+    //
     // Version 1.4.5 2023/04/19
     // Use resources for button text
+    //
+    // Version 1.4.6 2023/09/13
+    // When 'Ctrl+C' is pressed, if text is selected, only the selected text is copied
 
     public class FlexibleMessageBox
     {
@@ -811,17 +816,41 @@ namespace JR.Utils.GUI.Forms
                                         + (this.button2.Visible ? this.button2.Text + STANDARD_MESSAGEBOX_SEPARATOR_SPACES : string.Empty)
                                         + (this.button3.Visible ? this.button3.Text + STANDARD_MESSAGEBOX_SEPARATOR_SPACES : string.Empty);
 
-                    //Build same clipboard text like the standard .Net MessageBox
-                    var textForClipboard = STANDARD_MESSAGEBOX_SEPARATOR_LINES
-                                         + this.Text + Environment.NewLine
-                                         + STANDARD_MESSAGEBOX_SEPARATOR_LINES
-                                         + this.richTextBoxMessage.Text + Environment.NewLine
-                                         + STANDARD_MESSAGEBOX_SEPARATOR_LINES
-                                         + buttonsTextLine.Replace("&", string.Empty) + Environment.NewLine
-                                         + STANDARD_MESSAGEBOX_SEPARATOR_LINES;
+
+                    var textForClipboard =
+                        string.IsNullOrEmpty(this.richTextBoxMessage.SelectedText) ?
+                            //Build same clipboard text like the standard .Net MessageBox
+                            STANDARD_MESSAGEBOX_SEPARATOR_LINES
+                            + this.Text + Environment.NewLine
+                            + STANDARD_MESSAGEBOX_SEPARATOR_LINES
+                            + this.richTextBoxMessage.Text + Environment.NewLine
+                            + STANDARD_MESSAGEBOX_SEPARATOR_LINES
+                            + buttonsTextLine.Replace("&", string.Empty) + Environment.NewLine
+                            + STANDARD_MESSAGEBOX_SEPARATOR_LINES
+                        :
+                            this.richTextBoxMessage.SelectedText;
 
                     //Set text in clipboard
-                    Clipboard.SetText(textForClipboard);
+                    try
+                    {
+                        Clipboard.SetText(textForClipboard);
+                    }
+                    catch (Exception ex)
+                    {
+                        try
+                        {
+                            // Sometimes Clipboard.SetText throws exception but the text is copied.
+                            // We shows the error message when Clipboard text is not equal to the text
+                            if (Clipboard.GetText() != textForClipboard)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+                        }
+                        catch(Exception)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
                 }
             }
 

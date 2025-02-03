@@ -84,6 +84,16 @@ namespace FlexibleMessageBoxDemo
 
         private void button3_Click(object sender, EventArgs e)
         {
+            FlexibleMessageBox.Show(this,
+                            @"The version of Craving Explorer2 stored on 'C:\local\Craving Explorer 2\Application\CravingExplorer.exe' is not desired one. Current installed version v128.0.6613.170 is not equal to v128.0.6613.186
+'C:\Users\Kiaen\Documents\SceneExplorer\default.scexd' is old
+----------------------------
+Download folder path of 'C:\Users\waSudv\AppData\Local\Google\Chrome\Google' is set to 'C:\USERS\WASUDV\DESKTOP' from ''
+'C:\Users\waSudv\Documents\SceneExplorer\default.scexd' is old
+---------------------------",
+                            "This might not be shown properly",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
         }
 
         private void button4_Click(object sender, EventArgs e)

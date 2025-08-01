@@ -1,5 +1,3 @@
-// winform-cppclr-2010-skelton.cpp : main project file.
-
 #include "stdafx.h"
 #include "Form1.h"
 

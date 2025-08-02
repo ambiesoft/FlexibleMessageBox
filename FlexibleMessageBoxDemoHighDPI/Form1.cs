@@ -44,5 +44,14 @@ Download folder path of 'C:\Users\waSudv\AppData\Local\Google\Chrome\Google' is 
                 MessageBoxIcon.Error);
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FlexibleMessageBox.Show(this,
+                           @"'C:\Linkout\checkinstall\FlexibleMessageBox.dll' v1.4.7",
+                           "This might not be shown properly",
+                           MessageBoxButtons.OK,
+                           MessageBoxIcon.Error);
+        }
     }
 }

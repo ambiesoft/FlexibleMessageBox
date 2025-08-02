@@ -96,7 +96,11 @@ namespace JR.Utils.GUI.Forms
     // Version 1.4.6 2023/09/13
     // When 'Ctrl+C' is pressed, if text is selected, only the selected text is copied
     //
+    // Version 1.4.7 2025/08/02
     // Culculate the dialog height
+
+    // Version 1.4.8 2025/08/02
+    // Consider DPI for dialog size calculation
 
     public class FlexibleMessageBox
     {
@@ -568,36 +572,81 @@ namespace JR.Utils.GUI.Forms
             /// <param name="flexibleMessageBoxForm">The FlexibleMessageBox dialog.</param>
             /// <param name="text">The text (the longest text row is used to calculate the dialog width).</param>
             /// <param name="text">The caption (this can also affect the dialog width).</param>
+            //private static void SetDialogSizes(FlexibleMessageBoxForm flexibleMessageBoxForm, string text, string caption)
+            //{
+            //    //First set the bounds for the maximum dialog size
+            //    flexibleMessageBoxForm.MaximumSize = new Size(Convert.ToInt32(SystemInformation.WorkingArea.Width * FlexibleMessageBoxForm.GetCorrectedWorkingAreaFactor(MAX_WIDTH_FACTOR)),
+            //                                                  Convert.ToInt32(SystemInformation.WorkingArea.Height * FlexibleMessageBoxForm.GetCorrectedWorkingAreaFactor(MAX_HEIGHT_FACTOR)));
+
+            //    //Get rows. Exit if there are no rows to render...
+            //    var stringRows = GetStringRows(text);
+            //    if (stringRows == null) return;
+
+            //    //Calculate whole text height
+            //    var textHeight = TextRenderer.MeasureText(text, FONT).Height;
+
+            //    //Calculate width for longest text line
+            //    const int SCROLLBAR_WIDTH_OFFSET = 15;
+            //    var longestTextRowWidth = stringRows.Max(textForRow => TextRenderer.MeasureText(textForRow, FONT).Width);
+            //    var captionWidth = TextRenderer.MeasureText(caption, SystemFonts.CaptionFont).Width;
+            //    var textWidth = Math.Max(longestTextRowWidth + SCROLLBAR_WIDTH_OFFSET, captionWidth);
+
+            //    //Calculate margins
+            //    var marginWidth = flexibleMessageBoxForm.Width - flexibleMessageBoxForm.richTextBoxMessage.Width;
+            //    var marginHeight = flexibleMessageBoxForm.Height - flexibleMessageBoxForm.richTextBoxMessage.Height;
+
+            //    // Culculate height
+            //    int totalTextHeight = stringRows.Sum(row => TextRenderer.MeasureText(row, FONT).Height);
+            //    int minHeight = 50;
+            //    int finalHeight = Math.Max(totalTextHeight + marginHeight, minHeight);
+
+            //    //Set calculated dialog size (if the calculated values exceed the maximums, they were cut by windows forms automatically)
+            //    flexibleMessageBoxForm.Size = new Size(textWidth + marginWidth, finalHeight);
+            //}
+
             private static void SetDialogSizes(FlexibleMessageBoxForm flexibleMessageBoxForm, string text, string caption)
             {
-                //First set the bounds for the maximum dialog size
-                flexibleMessageBoxForm.MaximumSize = new Size(Convert.ToInt32(SystemInformation.WorkingArea.Width * FlexibleMessageBoxForm.GetCorrectedWorkingAreaFactor(MAX_WIDTH_FACTOR)),
-                                                              Convert.ToInt32(SystemInformation.WorkingArea.Height * FlexibleMessageBoxForm.GetCorrectedWorkingAreaFactor(MAX_HEIGHT_FACTOR)));
+                // DPI倍率の取得（フォームの Graphics オブジェクトを一時的に使う）
+                using (Graphics g = flexibleMessageBoxForm.CreateGraphics())
+                {
+                    float dpiX = g.DpiX;
+                    float dpiY = g.DpiY;
+                    float scaleX = dpiX / 96f; // 96 DPI を基準にスケール倍率を計算
+                    float scaleY = dpiY / 96f;
 
-                //Get rows. Exit if there are no rows to render...
-                var stringRows = GetStringRows(text);
-                if (stringRows == null) return;
+                    // 最大サイズを DPI に合わせて設定
+                    flexibleMessageBoxForm.MaximumSize = new Size(
+                        Convert.ToInt32(SystemInformation.WorkingArea.Width * FlexibleMessageBoxForm.GetCorrectedWorkingAreaFactor(MAX_WIDTH_FACTOR) * scaleX),
+                        Convert.ToInt32(SystemInformation.WorkingArea.Height * FlexibleMessageBoxForm.GetCorrectedWorkingAreaFactor(MAX_HEIGHT_FACTOR) * scaleY)
+                    );
 
-                //Calculate whole text height
-                var textHeight = TextRenderer.MeasureText(text, FONT).Height;
-                    
-                //Calculate width for longest text line
-                const int SCROLLBAR_WIDTH_OFFSET = 15;
-                var longestTextRowWidth = stringRows.Max(textForRow => TextRenderer.MeasureText(textForRow, FONT).Width);
-                var captionWidth = TextRenderer.MeasureText(caption, SystemFonts.CaptionFont).Width;
-                var textWidth = Math.Max(longestTextRowWidth + SCROLLBAR_WIDTH_OFFSET, captionWidth);
-                
-                //Calculate margins
-                var marginWidth = flexibleMessageBoxForm.Width - flexibleMessageBoxForm.richTextBoxMessage.Width;
-                var marginHeight = flexibleMessageBoxForm.Height - flexibleMessageBoxForm.richTextBoxMessage.Height;
+                    // 行取得。なければ終了
+                    var stringRows = GetStringRows(text);
+                    if (stringRows == null) return;
 
-                // Culculate height
-                int totalTextHeight = stringRows.Sum(row => TextRenderer.MeasureText(row, FONT).Height);
-                int minHeight = 50;
-                int finalHeight = Math.Max(totalTextHeight + marginHeight, minHeight);
+                    // テキストの高さを計算
+                    var textHeight = TextRenderer.MeasureText(text, FONT).Height;
 
-                //Set calculated dialog size (if the calculated values exceed the maximums, they were cut by windows forms automatically)
-                flexibleMessageBoxForm.Size = new Size(textWidth + marginWidth, finalHeight);
+                    // スクロールバーの幅オフセット（DPIに合わせる）
+                    int scrollbarWidthOffset = (int)(15 * scaleX);
+
+                    // 最長行の幅、キャプションの幅を計算（DPI非対応でも TextRenderer は DPI に影響されるが念のため）
+                    var longestTextRowWidth = stringRows.Max(row => TextRenderer.MeasureText(row, FONT).Width);
+                    var captionWidth = TextRenderer.MeasureText(caption, SystemFonts.CaptionFont).Width;
+                    var textWidth = Math.Max(longestTextRowWidth + scrollbarWidthOffset, captionWidth);
+
+                    // マージンを取得（DPIに合わせて）
+                    var marginWidth = (int)((flexibleMessageBoxForm.Width - flexibleMessageBoxForm.richTextBoxMessage.Width) * scaleX);
+                    var marginHeight = (int)((flexibleMessageBoxForm.Height - flexibleMessageBoxForm.richTextBoxMessage.Height) * scaleY);
+
+                    // テキスト全体の高さ計算
+                    int totalTextHeight = stringRows.Sum(row => TextRenderer.MeasureText(row, FONT).Height);
+                    int minHeight = (int)(50 * scaleY);
+                    int finalHeight = Math.Max(totalTextHeight + marginHeight, minHeight);
+
+                    // 最終サイズを設定
+                    flexibleMessageBoxForm.Size = new Size(textWidth + marginWidth, finalHeight);
+                }
             }
 
             /// <summary>

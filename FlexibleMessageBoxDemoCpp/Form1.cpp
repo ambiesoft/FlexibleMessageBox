@@ -11,6 +11,7 @@ namespace FlexibleMessageBoxDemoCpp {
 		//
 		//)V0G0N";
 
+		JR::Utils::GUI::Forms::FlexibleMessageBox::FONT = gcnew System::Drawing::Font("Segoe UI Emoji", 12);
 		JR::Utils::GUI::Forms::FlexibleMessageBox::Show(this,
 			aaa,
 			"MyApp",

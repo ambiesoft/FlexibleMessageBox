@@ -95,6 +95,8 @@ namespace JR.Utils.GUI.Forms
     //
     // Version 1.4.6 2023/09/13
     // When 'Ctrl+C' is pressed, if text is selected, only the selected text is copied
+    //
+    // Culculate the dialog height
 
     public class FlexibleMessageBox
     {
@@ -588,11 +590,14 @@ namespace JR.Utils.GUI.Forms
                 //Calculate margins
                 var marginWidth = flexibleMessageBoxForm.Width - flexibleMessageBoxForm.richTextBoxMessage.Width;
                 var marginHeight = flexibleMessageBoxForm.Height - flexibleMessageBoxForm.richTextBoxMessage.Height;
-                int magicAdd = 12;
-                marginHeight += magicAdd;
+
+                // Culculate height
+                int totalTextHeight = stringRows.Sum(row => TextRenderer.MeasureText(row, FONT).Height);
+                int minHeight = 50;
+                int finalHeight = Math.Max(totalTextHeight + marginHeight, minHeight);
+
                 //Set calculated dialog size (if the calculated values exceed the maximums, they were cut by windows forms automatically)
-                flexibleMessageBoxForm.Size = new Size(textWidth + marginWidth,
-                                                       textHeight + marginHeight);
+                flexibleMessageBoxForm.Size = new Size(textWidth + marginWidth, finalHeight);
             }
 
             /// <summary>
